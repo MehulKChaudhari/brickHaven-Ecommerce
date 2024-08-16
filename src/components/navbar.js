@@ -4,6 +4,7 @@ import { useUserData } from 'ecommerce/contexts/userDataContext';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { FaShoppingCart, FaHeart } from 'react-icons/fa';
+import Image from 'next/image';
 
 export const Navbar = () => {
     const { cart, wishlist } = useUserData();
@@ -24,8 +25,8 @@ export const Navbar = () => {
     return (
         <div className="fixed top-0 left-0 right-0 z-50 flex flex-row justify-between items-center p-4 bg-white text-black shadow-md border-b border-gray-200">
             <div className="flex flex-row gap-5 items-center">
-                <div onClick={onClickHome} className="cursor-pointer text-yellow-500 text-3xl font-bold tracking-wider hover:text-yellow-400 transition">
-                    <span className="text-red-600">Brick</span>Haven
+                <div onClick={onClickHome} className="cursor-pointer text-yellow-300 text-3xl font-bold tracking-wider hover:text-yellow-500 transition">
+                    <Image src="/brandlogo.png" alt="Brand Logo" width={150} height={150} />
                 </div>
             </div>
             <div className="flex items-center space-x-6">
