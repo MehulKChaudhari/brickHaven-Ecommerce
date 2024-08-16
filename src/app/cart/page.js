@@ -20,7 +20,7 @@ export default function Cart() {
     };
 
     return (
-        <main className="w-full flex min-h-screen flex-col items-center p-4 md:p-8">
+        <div className="w-full flex min-h-screen flex-col items-center p-4 md:p-8">
             <h1 className="text-2xl md:text-3xl font-extrabold mb-6 md:mb-8">Your Cart</h1>
             <div className="w-full max-w-5xl flex flex-col justify-center lg:flex-row gap-6 md:gap-8">
                 <div className="w-full lg:w-2/3 bg-white p-4 md:p-6 rounded-lg shadow-lg">
@@ -51,6 +51,6 @@ export default function Cart() {
                     Continue Shopping
                 </button>
             </div>
-        </main>
+        </div>
     );
 }

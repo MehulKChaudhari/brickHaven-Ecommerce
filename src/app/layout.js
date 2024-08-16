@@ -3,6 +3,8 @@ import "./globals.css";
 import { Navbar } from "ecommerce/components/navbar";
 import { UserDataProvider } from "ecommerce/contexts/userDataContext";
 import { Footer } from "ecommerce/components/footer";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +19,12 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <UserDataProvider>
           <Navbar />
-          <div className="flex flex-col justify-center items-center mx-auto p-4 w-full mt-20">
+          <div className="min-h-[75vh] flex flex-col items-center mx-auto p-4 w-full mt-20">
             {children}
           </div>
           <Footer />
+          <ToastContainer position="bottom-right"
+            autoClose={3000} />
         </UserDataProvider>
       </body>
     </html>

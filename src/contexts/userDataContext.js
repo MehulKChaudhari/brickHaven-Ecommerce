@@ -1,5 +1,6 @@
 'use client';
 import { createContext, useState, useContext } from 'react';
+import { toast } from 'react-toastify';
 
 const UserDataContext = createContext();
 
@@ -15,6 +16,7 @@ export const UserDataProvider = ({ children }) => {
         setCart((prevCart) =>
             prevCart.filter(cartItem => cartItem.id !== itemId)
         );
+        toast("Removed to cart", { type: "info" });
     };
 
     const updateQuantity = (itemId, newQuantity) => {
@@ -41,8 +43,10 @@ export const UserDataProvider = ({ children }) => {
 
         if (existingProduct) {
             setWishlist(wishlist.filter(item => item.id !== product.id));
+            toast(`${product.name} removed to wishlist`, { type: "info" });
         } else {
             setWishlist([...wishlist, product]);
+            toast(`${product.name} added to wishlist`, { type: "success" });
         }
     };
 
