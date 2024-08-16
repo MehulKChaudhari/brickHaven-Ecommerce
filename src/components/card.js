@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { FaHeart } from "react-icons/fa";
 
-export default function Card({ id, name, image, price, brand, handleAddToCart, isInCartInitially }) {
+export default function Card({ id, name, image, price, brand, handleAddToCart, isInCartInitially, toggleWishlist, isInWishlist }) {
 
   const [isInCart, setIsInCart] = useState(isInCartInitially);
   const router = useRouter();
@@ -14,10 +14,6 @@ export default function Card({ id, name, image, price, brand, handleAddToCart, i
 
   const handleGoToCart = () => {
     router.push('/cart');
-  };
-
-  const handleWishlistClick = () => {
-    console.log('Added to wishlist');
   };
 
   return (
@@ -53,10 +49,10 @@ export default function Card({ id, name, image, price, brand, handleAddToCart, i
         </div>
       </div>
       <FaHeart
-        className="text-black hover:text-red-500 hover:border-red-500 cursor-pointer transition-colors absolute top-3 right-3"
+        className={`${isInWishlist ? "text-red-500" : "text-black"} sm:hover:text-red-400 hover:border-red-500 cursor-pointer transition-colors absolute top-3 right-3`}
         size={20}
         style={{ backgroundColor: 'transparent' }}
-        onClick={handleWishlistClick}
+        onClick={toggleWishlist}
       />
     </div>
   );

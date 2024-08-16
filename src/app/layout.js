@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "ecommerce/components/navbar";
 import { UserDataProvider } from "ecommerce/contexts/userDataContext";
+import { Footer } from "ecommerce/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,9 +17,12 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <UserDataProvider>
           <Navbar />
-          {children}
+          <div className="flex flex-col justify-center items-center mx-auto p-4 w-full mt-20">
+            {children}
+          </div>
+          <Footer />
         </UserDataProvider>
-        </body>
+      </body>
     </html>
   );
 }
