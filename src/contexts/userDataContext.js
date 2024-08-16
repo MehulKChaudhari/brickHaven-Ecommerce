@@ -51,7 +51,7 @@ export const UserDataProvider = ({ children }) => {
     };
 
     return (
-        <UserDataContext.Provider value={{ cart, addToCart, updateQuantity, removeFromCart, wishlist, toggleWishlist, isInWishlist }}>
+        <UserDataContext.Provider value={{ cart, setCart, addToCart, updateQuantity, removeFromCart, wishlist, toggleWishlist, isInWishlist }}>
             {children}
         </UserDataContext.Provider>
     );
