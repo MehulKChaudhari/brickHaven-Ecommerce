@@ -26,7 +26,8 @@ export default function CartCard({ product, updateQuantity, removeFromCart }) {
                         <span className="mx-2 text-lg">{quantity}</span>
                         <button
                             onClick={() => updateQuantity(id, quantity + 1)}
-                            className="p-1 text-gray-600 hover:text-black hover:bg-gray-200 rounded-full"
+                            className="p-1 text-gray-600 hover:text-black hover:bg-gray-200 rounded-full disabled:opacity-40 disabled:cursor-not-allowed"
+                            disabled={product.stock <= quantity}
                         >
                             <FaPlus size={12} />
                         </button>
