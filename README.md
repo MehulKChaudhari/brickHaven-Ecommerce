@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# BrickHaven
+
+Welcome to BrickHaven, your ultimate destination for LEGO products! Our e-commerce platform offers a seamless shopping experience with features designed to enhance your LEGO adventures. From adding items to your cart and wishlist to enjoying discounts with coupon codes, BrickHaven makes it easy to find and purchase your favorite LEGO sets.
+
+## Features
+
+- **Add to Cart**: Easily add LEGO products to your shopping cart and proceed to checkout.
+- **Wishlist**: Save your favorite items for future purchases with our wishlist feature.
+- **Infinite Scrolling**: Discover more LEGO products without the hassle of pagination on the products page.
+- **Discount Coupons**: Apply discount codes to enjoy savings on your purchases.
+- **Alert Toasts**: Receive toasts messages for a smoother user experience.
+
+## Screenshots
+
+
+## Hosted Link
+
+Check out the live version of BrickHaven here: [BrickHaven Live](https://brickhaven.mehulkc.me/)
 
 ## Getting Started
 
-First, run the development server:
+To get started with BrickHaven, follow these steps:
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (>= 14.x)
+- [npm](https://www.npmjs.com/) (for managing packages)
+
+### Clone the Repository
+
+1. Clone the repository to your local machine:
+
+```bash
+    git clone https://github.com/MehulKChaudhari/brickHaven-Ecommerce.git
+```
+
+2. Navigate into the project directory:
+```bash
+cd brickHaven-Ecommerce
+```
+3. Install the required dependencies:
+
+```bash
+npm install
+```
+
+### Run the Project
+
+4. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+6. To create a production build, run:
+```bash
+    npm run build
+```
 
-## Learn More
+7. Start the production server:
+```bash
+    npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
