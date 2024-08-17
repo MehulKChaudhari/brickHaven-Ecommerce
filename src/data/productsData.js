@@ -88,6 +88,96 @@ const products = [
         description: "Recreate the iconic Statue of Liberty with this detailed LEGO set.",
         quantity: 15,
         brand: "LEGO"
+    },
+    {
+        id: 11,
+        name: "LEGO McLaren P1™",
+        price: 349.99,
+        image: "https://www.lego.com/cdn/cs/set/assets/blt519dac201a3dd4c1/42172.png?format=webply&fit=bounds&quality=60&width=800&height=800&dpr=2",
+        description: "Build the famous McLaren P1™ with this intricate LEGO Technic model.",
+        quantity: 10,
+        brand: "LEGO"
+    },
+    {
+        id: 12,
+        name: "LEGO NASA Apollo 11 Lunar Lander",
+        price: 119.99,
+        image: "https://www.lego.com/cdn/cs/set/assets/blt5e2703640ec85d2a/10266.jpg?format=webply&fit=bounds&quality=60&width=800&height=800&dpr=2",
+        description: "Recreate the iconic Apollo 11 Lunar Lander with this detailed LEGO Ideas set.",
+        quantity: 40,
+        brand: "LEGO"
+    },
+    {
+        id: 13,
+        name: "LEGO Robot World Roller-Coaster Park",
+        price: 179.99,
+        image: "https://www.lego.com/cdn/cs/set/assets/bltdddda97237b3182f/60421.png?format=webply&fit=bounds&quality=60&width=800&height=800&dpr=2",
+        description: "Experience the thrills of a Robot World Roller-Coaster Park with this exciting LEGO Creator set.",
+        quantity: 25,
+        brand: "LEGO"
+    },
+    {
+        id: 14,
+        name: "LEGO Speed Champions Ferrari F40 Supercar",
+        price: 19.99,
+        image: "https://www.lego.com/cdn/cs/set/assets/blt08aac0509cd0f13d/76934_Prod.png?format=webply&fit=bounds&quality=60&width=800&height=800&dpr=2",
+        description: "Build a detailed model of the Ferrari F40 Supercar with this LEGO Speed Champions set.",
+        quantity: 60,
+        brand: "LEGO"
+    },
+    {
+        id: 15,
+        name: "LEGO Horse and Pony Trailer",
+        price: 29.99,
+        image: "https://www.lego.com/cdn/cs/set/assets/blt6f76e7c51da41ec9/42634_alt1.png?format=webply&fit=bounds&quality=60&width=800&height=800&dpr=2",
+        description: "Horse and Pony Trailer fun LEGO Friends set.",
+        quantity: 55,
+        brand: "LEGO"
+    },
+    {
+        id: 16,
+        name: "LEGO Andrea's Modern Mansion",
+        price: 49.99,
+        image: "https://www.lego.com/cdn/cs/set/assets/blt2e01103c8540f375/42639_alt1.png?format=webply&fit=bounds&quality=60&width=800&height=800&dpr=2",
+        description: "Join the Andrea's Modern Mansion LEGO Creator set.",
+        quantity: 35,
+        brand: "LEGO"
+    },
+    {
+        id: 17,
+        name: "LEGO The Windmill Farm",
+        price: 149.99,
+        image: "https://www.lego.com/cdn/cs/set/assets/bltbfaea9b0daa92c58/21262.png?format=webply&fit=bounds&quality=60&width=800&height=800&dpr=2",
+        description: "Explore The Windmill Farm with this detailed LEGO set.",
+        quantity: 20,
+        brand: "LEGO"
+    },
+    {
+        id: 18,
+        name: "LEGO Ahsoka Tano's T-6 Jedi Shuttle",
+        price: 179.99,
+        image: "https://www.lego.com/cdn/cs/set/assets/blt3a5fb2c3232a182b/75362.png?format=webply&fit=bounds&quality=60&width=800&height=800&dpr=2",
+        description: "Build and fly the Ahsoka Tano's T-6 Jedi Shuttle from the Star Wars universe.",
+        quantity: 15,
+        brand: "LEGO"
+    },
+    {
+        id: 19,
+        name: "LEGO Red London Telephone Box",
+        price: 59.99,
+        image: "https://www.lego.com/cdn/cs/set/assets/bltf2c1ab43ea784beb/21347.png?format=webply&fit=bounds&quality=60&width=800&height=800&dpr=2",
+        description: "Recreate the iconic Red London Telephone Box with this LEGO Architecture set.",
+        quantity: 30,
+        brand: "LEGO"
+    },
+    {
+        id: 20,
+        name: "LEGO Tree House",
+        price: 199.99,
+        image: "https://www.lego.com/cdn/cs/set/assets/bltd47a4d542f2a6d2d/21318_Prod.png?format=webply&fit=bounds&quality=60&width=800&height=800&dpr=2",
+        description: "Build a detailed treehouse with this versatile LEGO Creator set.",
+        quantity: 10,
+        brand: "LEGO"
     }
 ];
 
