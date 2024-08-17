@@ -60,7 +60,6 @@ export default function CartSummary({ cart, coupons }) {
         setIsLoading(true);
         setTimeout(() => {
             setIsLoading(false);
-            setCart([]);
             router.push('/checkout');
         }, 2000);
     };
