@@ -36,9 +36,14 @@ export default function CartSummary({ cart, coupons }) {
     };
 
     const applyCoupon = (coupon) => {
-        setSelectedCoupon(coupon);
-        setCouponCodeInput(coupon.code);
-        setCouponError(false);
+        if (coupon) {
+            setSelectedCoupon(coupon);
+            setCouponCodeInput(coupon.code);
+            setCouponError(false);
+        } else {
+            setSelectedCoupon(null);
+            setCouponCodeInput('');
+        }
     };
 
     const handleCouponInputChange = (e) => {
