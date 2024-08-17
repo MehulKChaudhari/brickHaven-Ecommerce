@@ -6,7 +6,6 @@ import { useUserData } from 'ecommerce/contexts/userDataContext';
 
 export default function CartSummary({ cart, coupons }) {
     const [selectedCoupon, setSelectedCoupon] = useState(null);
-    const [percentageDiscount, setPercentageDiscount] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const { setCart } = useUserData();
     const router = useRouter();
@@ -17,18 +16,23 @@ export default function CartSummary({ cart, coupons }) {
 
     const calculateDiscountAmount = () => {
         const subtotal = calculateSubtotal();
-        return ((percentageDiscount / 100) * subtotal).toFixed(2);
+        if (selectedCoupon?.type === 'FIXED') {
+            return selectedCoupon.discount;
+        }
+        return ((selectedCoupon?.discount / 100) * subtotal).toFixed(2);
     };
 
     const calculateTotal = () => {
         const subtotal = calculateSubtotal();
+        if (!selectedCoupon) {
+            return subtotal;
+        }
         const discountAmount = calculateDiscountAmount();
         return (subtotal - discountAmount).toFixed(2);
     };
 
     const applyCoupon = (coupon) => {
         setSelectedCoupon(coupon);
-        setPercentageDiscount(coupon.discount);
     };
 
     const handleCheckout = () => {
@@ -41,20 +45,20 @@ export default function CartSummary({ cart, coupons }) {
     };
 
     return (
-        <div className="p-4 bg-gray-100 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold mb-4">Summary</h2>
+        <div className="p-4 sm:p-6 bg-gray-100 rounded-lg shadow-md w-full">
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4">Summary</h2>
             <div className="mb-4">
-                <p className="text-gray-600">Subtotal: ${calculateSubtotal()}</p>
+                <p className="text-sm sm:text-base text-gray-600">Subtotal: ${calculateSubtotal()}</p>
             </div>
             {selectedCoupon && (
                 <div className="mb-4">
-                    <p className="text-gray-600">
+                    <p className="text-sm sm:text-base text-gray-600">
                         Discount ({selectedCoupon.name}): -${calculateDiscountAmount()}
                     </p>
                 </div>
             )}
             <div className="mb-4">
-                <label className="text-gray-600">Coupon Code:</label>
+                <label className="text-sm sm:text-base text-gray-600">Coupon Code:</label>
                 <input
                     type="text"
                     value={selectedCoupon ? selectedCoupon.code : ''}
@@ -63,12 +67,13 @@ export default function CartSummary({ cart, coupons }) {
                 />
             </div>
             <div className="mb-6">
-                <p className="text-gray-600">Total: ${calculateTotal()}</p>
+                <p className="text-sm sm:text-base text-gray-600">Total: ${calculateTotal()}</p>
             </div>
             <button
                 onClick={handleCheckout}
                 disabled={cart.length === 0 || isLoading}
-                className={`w-full ${cart.length === 0 ? "bg-yellow-200 disabled" : "bg-yellow-500"} text-white py-2 rounded-lg hover:bg-yellow-600 transition mb-4 flex justify-center items-center`}
+                className={`w-full text-sm sm:text-base py-2 rounded-lg transition mb-4 flex justify-center items-center 
+                    ${cart.length === 0 ? "bg-yellow-200 disabled" : "bg-yellow-500 text-white hover:bg-yellow-600"}`}
             >
                 {isLoading ? (
                     <svg className="animate-spin h-5 w-5 mr-3 text-white" viewBox="0 0 24 24">
@@ -79,8 +84,8 @@ export default function CartSummary({ cart, coupons }) {
                     'Checkout'
                 )}
             </button>
-            <h3 className="text-lg font-semibold mb-2">Available Coupons</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <h3 className="text-base sm:text-lg font-semibold mb-2">Available Coupons</h3>
+            <div className="grid grid-cols-1 gap-4">
                 {coupons.map((coupon) => (
                     <div
                         key={coupon.code}
@@ -89,8 +94,10 @@ export default function CartSummary({ cart, coupons }) {
                         ${selectedCoupon?.code === coupon.code ? 'border-yellow-500 bg-yellow-100' : 'border-gray-300'} 
                         hover:bg-yellow-50 transition`}
                     >
-                        <p className="text-sm font-semibold">{coupon.name}</p>
-                        <p className="text-gray-600">{coupon.discount}% off</p>
+                        <div className="flex flex-col sm:flex-row justify-between">
+                            <p className="text-xs sm:text-sm font-semibold">{coupon.name}</p>
+                            <p className="text-xs sm:text-sm text-gray-600 sm:ml-2 mt-1 sm:mt-0">{coupon.discount} {coupon.type === "FIXED" ? "$" : "%"} off</p>
+                        </div>
                     </div>
                 ))}
             </div>

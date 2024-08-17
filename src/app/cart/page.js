@@ -10,9 +10,10 @@ export default function Cart() {
     const router = useRouter();
 
     const coupons = [
-        { code: 'SAVE10', name: 'Save 10%', discount: 10 },
-        { code: 'SAVE20', name: 'Save 20%', discount: 20 },
-        { code: 'BRICK5', name: 'Brick Discount 5%', discount: 5 },
+        { code: 'SAVE10', name: 'Save 10%', discount: 10, type: "PERCENTAGE" },
+        { code: 'SAVE20', name: 'Save 20%', discount: 20, type: "PERCENTAGE" },
+        { code: 'BRICK10', name: 'Brick Discount $10 OFF', discount: 10, type: "FIXED" },
+        { code: 'BRICK15', name: 'Brick Discount $15 OFF', discount: 15, type: "FIXED" },
     ];
 
     const handleContinueShopping = () => {
@@ -38,7 +39,7 @@ export default function Cart() {
                     )}
                 </div>
                 {cart.length > 0 && (
-                    <div className="w-full lg:w-1/3 bg-gray-50 p-4 md:p-6 rounded-lg shadow-lg">
+                    <div className="w-full h-fit lg:w-1/3 bg-gray-50 p-4 md:p-6 rounded-lg shadow-lg">
                         <CartSummary cart={cart} coupons={coupons} />
                     </div>
                 )}
