@@ -3,9 +3,12 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useUserData } from 'ecommerce/contexts/userDataContext';
+import CouponCard from 'ecommerce/components/couponCard';
 
 export default function CartSummary({ cart, coupons }) {
     const [selectedCoupon, setSelectedCoupon] = useState(null);
+    const [couponCodeInput, setCouponCodeInput] = useState('');
+    const [couponError, setCouponError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { setCart } = useUserData();
     const router = useRouter();
@@ -33,6 +36,23 @@ export default function CartSummary({ cart, coupons }) {
 
     const applyCoupon = (coupon) => {
         setSelectedCoupon(coupon);
+        setCouponCodeInput(coupon.code);
+        setCouponError(false);
+    };
+
+    const handleCouponInputChange = (e) => {
+        setCouponCodeInput(e.target.value);
+        setCouponError(false);
+    };
+
+    const handleApplyCoupon = () => {
+        const coupon = coupons.find(c => c.code.toUpperCase() === couponCodeInput.toUpperCase());
+        if (coupon) {
+            applyCoupon(coupon);
+        } else {
+            setCouponError(true);
+            setSelectedCoupon(null);
+        }
     };
 
     const handleCheckout = () => {
@@ -59,12 +79,24 @@ export default function CartSummary({ cart, coupons }) {
             )}
             <div className="mb-4">
                 <label className="text-sm sm:text-base text-gray-600">Coupon Code:</label>
-                <input
-                    type="text"
-                    value={selectedCoupon ? selectedCoupon.code : ''}
-                    readOnly
-                    className="border border-gray-300 p-1 rounded w-full mt-2"
-                />
+                <div className="flex items-center mt-2">
+                    <input
+                        type="text"
+                        value={couponCodeInput}
+                        onChange={handleCouponInputChange}
+                        className={`border p-1 rounded w-full ${couponError ? 'border-red-500' : 'border-gray-300'}`}
+                        disabled={!!selectedCoupon}
+                    />
+                    <button
+                        onClick={handleApplyCoupon}
+                        disabled={!!selectedCoupon}
+                        className={`py-1 px-3 rounded-lg ml-2 transition 
+                        ${selectedCoupon ? 'bg-green-200 text-green-800 cursor-not-allowed' : 'bg-yellow-500 text-white hover:bg-yellow-600'}`}
+                    >
+                        {selectedCoupon ? 'Coupon Applied' : 'Apply'}
+                    </button>
+                </div>
+                {couponError && <p className="text-red-500 text-sm mt-2">Coupon does not exist</p>}
             </div>
             <div className="mb-6">
                 <p className="text-sm sm:text-base text-gray-600">Total: ${calculateTotal()}</p>
@@ -84,21 +116,15 @@ export default function CartSummary({ cart, coupons }) {
                     'Checkout'
                 )}
             </button>
-            <h3 className="text-base sm:text-lg font-semibold mb-2">Available Coupons</h3>
+            <h3 className="text-base sm:text-lg font-semibold mb-2">Available Offers 🎉</h3>
             <div className="grid grid-cols-1 gap-4">
                 {coupons.map((coupon) => (
-                    <div
+                    <CouponCard
                         key={coupon.code}
-                        onClick={() => applyCoupon(coupon)}
-                        className={`cursor-pointer p-3 rounded-lg border 
-                        ${selectedCoupon?.code === coupon.code ? 'border-yellow-500 bg-yellow-100' : 'border-gray-300'} 
-                        hover:bg-yellow-50 transition`}
-                    >
-                        <div className="flex flex-col sm:flex-row justify-between">
-                            <p className="text-xs sm:text-sm font-semibold">{coupon.name}</p>
-                            <p className="text-xs sm:text-sm text-gray-600 sm:ml-2 mt-1 sm:mt-0">{coupon.discount} {coupon.type === "FIXED" ? "$" : "%"} off</p>
-                        </div>
-                    </div>
+                        coupon={coupon}
+                        selectedCoupon={selectedCoupon}
+                        onApplyCoupon={applyCoupon}
+                    />
                 ))}
             </div>
         </div>

@@ -1,7 +1,7 @@
 'use client';
 import Card from "ecommerce/components/card";
 import { useUserData } from "ecommerce/contexts/userDataContext";
-import products from "ecommerce/data/data";
+import products from "ecommerce/data/productsData";
 import { toast } from "react-toastify";
 
 export default function Home() {

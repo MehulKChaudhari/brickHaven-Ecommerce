@@ -26,7 +26,7 @@ export default function Checkout() {
                     <p className="text-lg text-gray-600 mb-4">
                         Your order will be delivered within 3 working days.
                     </p>
-                    <p className="text-lg text-gray-600 flex items-center justify-center mb-6">
+                    <p className="text-lg text-gray-500 flex items-center justify-center mb-6">
                         <FaShoppingCart className="text-2xl mr-2" />
                         Thanks for shopping with us!
                     </p>

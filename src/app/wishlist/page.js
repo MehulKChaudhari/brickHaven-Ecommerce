@@ -2,6 +2,7 @@
 
 import { useUserData } from 'ecommerce/contexts/userDataContext';
 import Card from 'ecommerce/components/card';
+import { FaHeart } from 'react-icons/fa';
 
 export default function Wishlist() {
     const { addToCart, cart, wishlist, isInWishlist, toggleWishlist } = useUserData();
@@ -31,7 +32,13 @@ export default function Wishlist() {
                     ))}
                 </div>
             ) : (
-                <p className="text-gray-500 text-center">Your wishlist is empty.</p>
+                <div className='w-full lg:w-2/3 bg-white p-4 md:p-6 rounded-lg shadow-lg'>
+                    <p className="text-lg text-gray-500 flex items-center justify-center mb-6">
+                        <FaHeart
+                            className="text-red-500 text-2xl mr-2"
+                            size={20}
+                        />Your wishlist is empty.</p>
+                </div>
             )}
         </>
     );

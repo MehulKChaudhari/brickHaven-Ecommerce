@@ -4,17 +4,12 @@ import { useUserData } from "ecommerce/contexts/userDataContext";
 import CartCard from "ecommerce/components/cartCard";
 import CartSummary from "ecommerce/components/cartSummary";
 import { useRouter } from "next/navigation";
+import coupons from "ecommerce/data/couponsData";
+import { FaShoppingCart } from "react-icons/fa";
 
 export default function Cart() {
     const { cart, updateQuantity, removeFromCart } = useUserData();
     const router = useRouter();
-
-    const coupons = [
-        { code: 'SAVE10', name: 'Save 10%', discount: 10, type: "PERCENTAGE" },
-        { code: 'SAVE20', name: 'Save 20%', discount: 20, type: "PERCENTAGE" },
-        { code: 'BRICK10', name: 'Brick Discount $10 OFF', discount: 10, type: "FIXED" },
-        { code: 'BRICK15', name: 'Brick Discount $15 OFF', discount: 15, type: "FIXED" },
-    ];
 
     const handleContinueShopping = () => {
         router.push('/');
@@ -35,7 +30,8 @@ export default function Cart() {
                             />
                         ))
                     ) : (
-                        <div className="text-gray-500 text-center">Your cart is empty.</div>
+                        <div className="text-lg text-gray-500 text-center flex items-center justify-center mb-6"> <FaShoppingCart className="text-2xl mr-2" />
+                            Your cart is empty.</div>
                     )}
                 </div>
                 {cart.length > 0 && (
