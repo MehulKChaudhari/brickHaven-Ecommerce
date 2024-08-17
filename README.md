@@ -1,17 +1,18 @@
 # BrickHaven
 
-Welcome to BrickHaven, your ultimate destination for LEGO products! Our e-commerce platform offers a seamless shopping experience with features designed to enhance your LEGO adventures. From adding items to your cart and wishlist to enjoying discounts with coupon codes, BrickHaven makes it easy to find and purchase your favorite LEGO sets.
+Welcome to BrickHaven, your ultimate destination for LEGO products! Our e-commerce platform offers a seamless shopping experience with features that enhance LEGO adventures. From adding items to your cart and wishlist to enjoying discounts with coupon codes, BrickHaven makes it easy to find and purchase your favourite LEGO sets.
 
 ## Features
 
 - **Add to Cart**: Easily add LEGO products to your shopping cart and proceed to checkout.
-- **Wishlist**: Save your favorite items for future purchases with our wishlist feature.
+- **Wishlist**: Save your favourite items for future purchases with our wishlist feature.
 - **Infinite Scrolling**: Discover more LEGO products without the hassle of pagination on the products page.
 - **Discount Coupons**: Apply discount codes to enjoy savings on your purchases.
 - **Alert Toasts**: Receive toasts messages for a smoother user experience.
 
 ## Screenshots
 
+https://github.com/user-attachments/assets/125ba388-dc9c-499a-a66e-de67bf7b2e1e
 
 ## Hosted Link
 
@@ -36,12 +37,12 @@ To get started with BrickHaven, follow these steps:
 
 2. Navigate into the project directory:
 ```bash
-cd brickHaven-Ecommerce
+    cd brickHaven-Ecommerce
 ```
 3. Install the required dependencies:
 
 ```bash
-npm install
+    npm install
 ```
 
 ### Run the Project
@@ -49,7 +50,7 @@ npm install
 4. Start the development server:
 
 ```bash
-npm run dev
+    npm run dev
 ```
 
 5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
