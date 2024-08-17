@@ -12,10 +12,28 @@ const INITIAL_PRODUCTS = 6;
 export default function Home() {
   const { addToCart, cart, toggleWishlist, isInWishlist } = useUserData();
 
-  const [displayedProducts, setDisplayedProducts] = useState([]);
+  const [displayedProducts, setDisplayedProducts] = useState(products.slice(0, INITIAL_PRODUCTS));
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [hasMoreProducts, setHasMoreProducts] = useState(true);
+  const [hasMoreProducts, setHasMoreProducts] = useState(products.length > INITIAL_PRODUCTS);
+
+  const loadMoreProducts = useCallback(() => {
+    setLoading(true);
+    setTimeout(() => {
+      const nextPage = currentPage + 1;
+      const startIdx = currentPage * INITIAL_PRODUCTS;
+      const endIdx = startIdx + INITIAL_PRODUCTS;
+      const newProducts = products.slice(startIdx, endIdx);
+
+      if (newProducts.length === 0) {
+        setHasMoreProducts(false);
+      } else {
+        setDisplayedProducts(prev => [...prev, ...newProducts]);
+        setCurrentPage(nextPage);
+      }
+      setLoading(false);
+    }, 1000);
+  }, [currentPage]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,28 +45,7 @@ export default function Home() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [loading, hasMoreProducts]);
-
-  useEffect(() => {
-    loadMoreProducts();
-  }, []);
-
-  const loadMoreProducts = useCallback(() => {
-    setLoading(true);
-    setTimeout(() => {
-      const nextPage = currentPage + 1;
-      const indexOfLastProduct = nextPage * INITIAL_PRODUCTS;
-      const newProducts = products.slice(currentPage * INITIAL_PRODUCTS, indexOfLastProduct);
-
-      if (newProducts.length === 0) {
-        setHasMoreProducts(false);
-      } else {
-        setDisplayedProducts(prev => [...prev, ...newProducts]);
-        setCurrentPage(nextPage);
-      }
-      setLoading(false);
-    }, 1000);
-  }, [currentPage, loading, hasMoreProducts]);
+  }, [loading, hasMoreProducts, loadMoreProducts]);
 
   const handleAddToCart = (product) => {
     addToCart(product);
