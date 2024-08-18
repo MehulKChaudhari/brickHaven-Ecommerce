@@ -5,22 +5,31 @@ import { toast } from 'react-toastify';
 const UserDataContext = createContext();
 
 export const UserDataProvider = ({ children }) => {
-    const [cart, setCart] = useState(() => {
-        const savedCart = localStorage.getItem('cart');
-        return savedCart ? JSON.parse(savedCart) : [];
-    });
-
-    const [wishlist, setWishlist] = useState(() => {
-        const savedWishlist = localStorage.getItem('wishlist');
-        return savedWishlist ? JSON.parse(savedWishlist) : [];
-    });
+    const [isLoading, setIsLoading] = useState(true);
+    const [cart, setCart] = useState([]);
+    const [wishlist, setWishlist] = useState([]);
 
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cart));
+        const savedCart = localStorage.getItem('cart');
+        const savedWishlist = localStorage.getItem('wishlist');
+
+        setCart(savedCart ? JSON.parse(savedCart) : []);
+        setWishlist(savedWishlist ? JSON.parse(savedWishlist) : []);
+        setIsLoading(false);
+
+    }, []);
+
+    useEffect(() => {
+        if (typeof window !== "undefined" && !isLoading) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
     }, [cart]);
 
     useEffect(() => {
-        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        if (typeof window !== "undefined" && !isLoading) {
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        }
     }, [wishlist]);
 
     const addToCart = (product) => {
